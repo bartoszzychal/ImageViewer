@@ -14,7 +14,7 @@
    <children>
       <ScrollPane hbarPolicy="AS_NEEDED" layoutY="50.0" vbarPolicy="ALWAYS">
          <content>
-            <TilePane fx:id="tile" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="160.0" prefWidth="800.0" tileAlignment="TOP_LEFT" />
+            <TilePane fx:id="tile" alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="160.0" hgap="15" prefWidth="800.0" tileAlignment="TOP_LEFT" />
          </content>
       </ScrollPane>
       <ScrollPane fx:id="scrollPane" hbarPolicy="AS_NEEDED" layoutY="257.0" prefHeight="545.0" prefWidth="819.0" vbarPolicy="AS_NEEDED">

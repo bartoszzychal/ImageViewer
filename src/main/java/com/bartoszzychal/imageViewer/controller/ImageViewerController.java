@@ -7,8 +7,6 @@ import java.util.function.UnaryOperator;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import org.apache.log4j.Logger;
-
 import com.bartoszzychal.imageViewer.imageGallery.ImageGallery;
 import com.bartoszzychal.imageViewer.imageGallery.impl.ImageGalleryImpl;
 import com.bartoszzychal.imageViewer.imageGallery.model.ImageModel;
@@ -18,12 +16,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -72,19 +66,23 @@ public class ImageViewerController {
 	private String lastDirectoryPath;
 	private DoubleProperty zoomProperty = new SimpleDoubleProperty(200);
 	private ImageGallery gallery = new ImageGalleryImpl();
-	private final Logger LOG = Logger.getLogger(ImageViewerController.class);
 	private SlideShowState slideShowState = null;
 	private Timeline slideShow = null;
 
 	@FXML
 	private void initialize() {
 		slideShowState = SlideShowState.START;
-		setTileProperties();
 		setZoomProperties();
 		setTimeTextFieldProperties();
+		setTilePaneProperties();
 		slideButton.disableProperty().bind(timeTextField.textProperty().isEmpty().or(gallery.getImageGallery().emptyProperty()));
 		nextButton.disableProperty().bind(gallery.getImageGallery().emptyProperty());
 		previousButton.disableProperty().bind(gallery.getImageGallery().emptyProperty());
+	}
+
+	private void setTilePaneProperties() {
+		tile.setPadding(new Insets(15,15,15,15));
+		tile.setStyle("-fx-background-color: FFFFFF;");
 	}
 
 	private void setTimeTextFieldProperties() {
@@ -128,11 +126,6 @@ public class ImageViewerController {
 		});
 	}
 
-	private void setTileProperties() {
-		tile.setPadding(new Insets(15, 15, 15, 15));
-		tile.setHgap(15);
-		tile.setStyle("-fx-background-color: FFFFFF;");
-	}
 
 	@FXML
 	public void setDirectory(ActionEvent event) {
@@ -210,7 +203,7 @@ public class ImageViewerController {
 	public void slideshow(ActionEvent event) {
 		switch (slideShowState) {
 		case START:
-			timeTextField.setDisable(false);
+			timeTextField.setDisable(true);
 			slideButton.setText("Stop");
 			String text = timeTextField.getText();
 			Integer duration = Integer.valueOf(text);
@@ -228,7 +221,7 @@ public class ImageViewerController {
 			slideShowState = SlideShowState.STOP;
 			break;
 		case STOP:
-			timeTextField.setDisable(true);
+			timeTextField.setDisable(false);
 			slideButton.setText("Start");
 			slideShow.stop();
 			slideShowState = SlideShowState.START;;
