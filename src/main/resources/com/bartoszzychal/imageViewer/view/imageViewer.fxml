@@ -20,12 +20,12 @@
       <ScrollPane fx:id="scrollPane" hbarPolicy="AS_NEEDED" layoutY="257.0" prefHeight="545.0" prefWidth="819.0" vbarPolicy="AS_NEEDED">
       	<ImageView fx:id="imageViewViewer" cache="true" disable="true" fitHeight="585.0" fitWidth="818.0" pickOnBounds="true" preserveRatio="true" smooth="true" />
       </ScrollPane>
-      <Button fx:id="directoryButton" layoutX="8.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setDirectory" prefHeight="34.0" prefWidth="150.0" text="Select directory" />
+      <Button fx:id="directoryButton" layoutX="8.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setDirectory" prefHeight="34.0" prefWidth="150.0" text="%button.select_directory" />
       <Label fx:id="directoryLabel" layoutX="165.0" layoutY="13.0" prefHeight="24.0" prefWidth="640.0" />
-      <Button fx:id="previousButton" alignment="CENTER" layoutX="14.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousPicture" prefHeight="34.0" prefWidth="150.0" text="Previous" />
-      <Button fx:id="nextButton" alignment="CENTER" layoutX="655.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextPicture" prefHeight="34.0" prefWidth="150.0" text="Next" />
+      <Button fx:id="previousButton" alignment="CENTER" layoutX="14.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#previousPicture" prefHeight="34.0" prefWidth="150.0" text="%button.previous" />
+      <Button fx:id="nextButton" alignment="CENTER" layoutX="655.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextPicture" prefHeight="34.0" prefWidth="150.0" text="%button.next" />
       <Label fx:id="fileName" layoutX="335.0" layoutY="224.0" prefHeight="24.0" prefWidth="300.0" />
-      <Button fx:id="slideButton" alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="172.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#slideshow" prefHeight="34.0" prefWidth="150.0" text="Start" />
+      <Button fx:id="slideButton" alignment="BASELINE_LEFT" contentDisplay="TOP" layoutX="172.0" layoutY="219.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#slideshow" prefHeight="34.0" prefWidth="150.0" text="%button.start" />
       <TextField fx:id="timeTextField" alignment="CENTER" layoutX="271.0" layoutY="219.0" prefHeight="34.0" prefWidth="51.0" />
    </children>
 </AnchorPane>

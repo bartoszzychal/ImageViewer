@@ -76,4 +76,9 @@ public class ImageGalleryImpl implements ImageGallery {
 		return imageGallery;
 	}
 
+	@Override
+	public void setActual(ImageModel imageModel) {
+		actual.set(imageGallery.get(imageGallery.indexOf(imageModel)));
+	}
+
 }

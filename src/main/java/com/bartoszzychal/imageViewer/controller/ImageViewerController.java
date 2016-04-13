@@ -3,6 +3,7 @@ package com.bartoszzychal.imageViewer.controller;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -36,9 +37,11 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.DirectoryChooser;
 import javafx.util.Duration;
 
-//C:\Users\ZBARTOSZ\workspace_javafx\ImageViewer\pictures
 public class ImageViewerController {
 
+	@FXML
+	private ResourceBundle resources;
+	
 	@FXML
 	private ScrollPane scrollPane;
 	@FXML
@@ -168,7 +171,7 @@ public class ImageViewerController {
 			imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-					loadImageToImageViewViewer(imageModel);
+					setMainImageView(imageModel);
 				}
 			});
 			tile.getChildren().addAll(imageView);
@@ -181,7 +184,8 @@ public class ImageViewerController {
 	}
 
 	private void next() {
-		loadImageToImageViewViewer(gallery.getNext());
+		ImageModel next = gallery.getNext();
+		setMainImageView(next);
 	}
 
 	@FXML
@@ -190,7 +194,13 @@ public class ImageViewerController {
 	}
 
 	private void previous() {
-		loadImageToImageViewViewer(gallery.getPrevious());
+		ImageModel previous = gallery.getPrevious();
+		setMainImageView(previous);
+	}
+
+	private void setMainImageView(ImageModel imageView) {
+		loadImageToImageViewViewer(imageView);
+		gallery.setActual(imageView);
 	}
 
 	private void loadImageToImageViewViewer(final ImageModel imageModel) {
@@ -204,7 +214,7 @@ public class ImageViewerController {
 		switch (slideShowState) {
 		case START:
 			timeTextField.setDisable(true);
-			slideButton.setText("Stop");
+			slideButton.setText(resources.getString("slideshow.stop"));
 			String text = timeTextField.getText();
 			Integer duration = Integer.valueOf(text);
 			if(imageViewViewer.getImage()==null){
@@ -222,7 +232,7 @@ public class ImageViewerController {
 			break;
 		case STOP:
 			timeTextField.setDisable(false);
-			slideButton.setText("Start");
+			slideButton.setText(resources.getString("slideshow.start"));
 			slideShow.stop();
 			slideShowState = SlideShowState.START;;
 			break;

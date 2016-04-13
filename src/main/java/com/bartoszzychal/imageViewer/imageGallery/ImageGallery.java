@@ -12,6 +12,7 @@ public interface ImageGallery {
 	void addFile(File file);
 	void addFiles(Collection<? extends File> files);
 	void clear();
+	void setActual(ImageModel imageModel);
 	ImageModel getNext();
 	ImageModel getPrevious();
 	ImageModel getFirst();
